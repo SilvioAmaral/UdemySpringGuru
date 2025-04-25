@@ -1,0 +1,14 @@
+<html>
+<head>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<main>
+    <h1>Hello World</h1>
+
+    <button hx-post="/authors" hx-swap="authors">
+        Get Authors
+    </button>
+
+    <div id="authors"></div>
+</main>
+</html>
