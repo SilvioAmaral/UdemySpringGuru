@@ -1,5 +1,6 @@
 package com.newspark.udemy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -14,6 +15,7 @@ public class Book {
     private String title;
     private String isbn;
 
+    @JsonIgnoreProperties("books")
     @ManyToMany
     @JoinTable(name = "author_book",
             joinColumns = @JoinColumn(name = "book_id"),

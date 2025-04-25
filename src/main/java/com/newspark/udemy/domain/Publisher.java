@@ -1,8 +1,8 @@
 package com.newspark.udemy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.Objects;
@@ -26,6 +26,7 @@ public class Publisher {
         this.books = books;
     }
 
+    @JsonIgnoreProperties("publisher")
     @OneToMany(mappedBy = "publisher")
     private Set<Book> books;
 

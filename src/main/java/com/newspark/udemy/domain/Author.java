@@ -1,5 +1,6 @@
 package com.newspark.udemy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -15,6 +16,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
+    @JsonIgnoreProperties("authors")
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<Book>();
 
