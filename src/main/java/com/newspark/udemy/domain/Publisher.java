@@ -2,8 +2,11 @@ package com.newspark.udemy.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Publisher {
@@ -14,6 +17,17 @@ public class Publisher {
     private String city;
     private String state;
     private String zip;
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books;
 
     public Publisher() {
     }
