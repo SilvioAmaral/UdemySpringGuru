@@ -2,8 +2,10 @@ package com.newspark.udemy.bootstrap;
 
 import com.newspark.udemy.domain.Author;
 import com.newspark.udemy.domain.Book;
+import com.newspark.udemy.domain.Publisher;
 import com.newspark.udemy.repository.AuthorRepository;
 import com.newspark.udemy.repository.BookRepository;
+import com.newspark.udemy.repository.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,28 +14,17 @@ public class BootstrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-//        Author eric = new Author(1L, "Eric", "Evans");
-//        Author rod = new Author(2L, "Rod", "Johnson");
-//
-//        Book ddd = new Book(1L, "Domain Driven Design", "123123");
-//        Book ejb = new Book(2L, "Enterprise Java Beans", "321321");
-//
-//        Author ericSaved = authorRepository.save(eric);
-//        Author rodSaved = authorRepository.save(rod);
-//
-//        Book dddSaved = bookRepository.save(ddd);
-//        Book ejbSaved = bookRepository.save(ejb);
-//
-//        ericSaved.getBooks().add(dddSaved);
-//        rodSaved.getBooks().add(ejbSaved);
+
         Author eric = new Author();
         eric.setFirstName("Eric");
         eric.setLastName("Evans");
@@ -62,9 +53,15 @@ public class BootstrapData implements CommandLineRunner {
         authorRepository.save(ericSaved);
         authorRepository.save(rodSaved);
 
+        // assignment
+        Publisher oreally = new Publisher(1L, "O'Really" , "123 Olivera 4", "Toronto", "ON", "123123");
+        Publisher oreallySaved = publisherRepository.save(oreally);
+
+
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
 
 
     }
